@@ -333,6 +333,9 @@ class CuraApplication(QtApplication):
         SettingFunction.registerOperator("resolveOrValue", ExtruderManager.getResolveOrValue)
         SettingFunction.registerOperator("defaultExtruderPosition", ExtruderManager.getDefaultExtruderPosition)
 
+        from cura.Settings import custom_functions
+        SettingFunction.registerContextAwareOperator("getValue", custom_functions.getValue)
+
     # Adds all resources and container related resources.
     def __addAllResourcesAndContainerResources(self) -> None:
         Resources.addStorageType(self.ResourceTypes.QualityInstanceContainer, "quality")
